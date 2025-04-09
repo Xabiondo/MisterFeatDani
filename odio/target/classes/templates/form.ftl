@@ -1,164 +1,127 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Empleado</title>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+    <div class="login-container">
+        <h2>Bienvenido</h2>
+        <p>Por favor, inicia sesión para continuar</p>
+        <form action="/inicio" method="POST">
+            <div class="input-group">
+                <label for="usuario">Usuario</label>
+                <input type="text" id="usuario" name="usuario" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="options">
+                <label><input type="checkbox" name="remember"> Recuérdame</label>
+                <a href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <button type="submit">Ingresar</button>
+        </form>
+        <p>¿No tienes cuenta todavia? <a href="registro">Registrarse</a></p>
+    </div>
     <style>
+        /* CSS (styles.css) */
         body {
-     font-family: 'Creepster', cursive; /* Fuente escalofriante */
-     background-color: #000; /* Fondo negro */
-     background-image: url('https://i.imgur.com/8y9vZ6z.jpg'); /* Imagen de fondo con temática de Halloween */
-     background-size: cover;
-     background-position: center;
-     color: #fff; /* Texto blanco */
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     height: 100vh;
-     margin: 0;
-     overflow: hidden;
- }
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
- .form-container {
-     background: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente */
-     padding: 20px;
-     border-radius: 8px;
-     box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); /* Sombra roja siniestra */
-     width: 350px;
-     position: relative;
-     overflow: hidden;
- }
+        .login-container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 320px;
+            text-align: center;
+            animation: fadeIn 0.6s;
+        }
 
- h1 {
-     text-align: center;
-     margin-bottom: 20px;
-     font-size: 2.5rem;
-     text-shadow: 2px 2px 5px red; /* Sombra roja en el título */
-     animation: flicker 1.5s infinite alternate; /* Parpadeo espeluznante */
- }
+        h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
 
- label {
-     display: block;
-     margin-bottom: 5px;
-     font-weight: bold;
-     text-shadow: 1px 1px 3px red; /* Sombra roja en las etiquetas */
- }
+        p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
 
- input[type="text"],
- input[type="number"],
- select {
-     width: 100%;
-     padding: 8px;
-     margin-bottom: 15px;
-     border: 1px solid #ff0000; /* Borde rojo */
-     border-radius: 4px;
-     background-color: #1a1a1a; /* Fondo oscuro */
-     color: #fff; /* Texto blanco */
-     font-family: 'Creepster', cursive;
- }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
 
- input[type="text"]:focus,
- input[type="number"]:focus,
- select:focus {
-     outline: none;
-     box-shadow: 0 0 10px red; /* Resplandor rojo al enfocar */
- }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #444;
+        }
 
- .radio-group {
-     margin-bottom: 15px;
- }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
 
- .radio-group label {
-     margin-right: 10px;
-     text-shadow: 1px 1px 3px red; /* Sombra roja en los botones de radio */
- }
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
 
- button {
-     width: 100%;
-     padding: 10px;
-     background-color: #ff0000; /* Rojo sangre */
-     color: white;
-     border: none;
-     border-radius: 4px;
-     cursor: pointer;
-     font-size: 16px;
-     font-family: 'Creepster', cursive;
-     transition: transform 0.3s ease, box-shadow 0.3s ease;
- }
+        .options a {
+            color: #007BFF;
+            text-decoration: none;
+        }
 
- button:hover {
-     background-color: #8b0000; /* Rojo más oscuro al pasar el mouse */
-     transform: scale(1.05); /* Efecto de agrandamiento */
-     box-shadow: 0 0 15px red; /* Resplandor rojo */
- }
+        .options a:hover {
+            text-decoration: underline;
+        }
 
- /* Animación de parpadeo para el título */
- @keyframes flicker {
-     0%, 18%, 22%, 25%, 53%, 57%, 100% {
-         text-shadow: 2px 2px 5px red;
-     }
-     20%, 24%, 55% {
-         text-shadow: none;
-     }
- }
+        button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
 
- /* Añadir una animación de neblina en el fondo */
- body::before {
-     content: '';
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 200%;
-     height: 200%;
-     background: url('https://i.imgur.com/xyz1234.png') repeat; /* Imagen de neblina */
-     animation: fog-move 15s linear infinite;
-     opacity: 0.5;
-     z-index: -1;
- }
+        button:hover {
+            background: #0056b3;
+        }
 
- @keyframes fog-move {
-     0% {
-         transform: translateX(0) translateY(0);
-     }
-     100% {
-         transform: translateX(-50%) translateY(-50%);
-     }
- }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
     </style>
-</head>
-<body>
-<div class="form-container">
-    <h1>Formulario de Empleado</h1>
-    <form action="/submit" method="POST">
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id" placeholder="Ingrese el ID" required>
+    </body>
+    </html>
 
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre" required>
-
-        <label for="sueldo">Sueldo:</label>
-        <input type="number" id="sueldo" name="sueldo" placeholder="Ingrese el sueldo" required>
-
-        <label>Tipo de Contrato:</label>
-        <div class="radio-group">
-            <label><input type="radio" name="contrato" value="Temporal" required> Temporal</label>
-            <label><input type="radio" name="contrato" value="Indefinido"> Indefinido</label>
-        </div>
-
-        <label for="departamento">Departamento:</label>
-        <select id="departamento" name="departamento" required>
-            <option value="">Seleccione un departamento</option>
-            <option value="Recursos Humanos">Recursos Humanos</option>
-            <option value="Finanzas">Finanzas</option>
-            <option value="Ventas">Ventas</option>
-            <option value="Marketing">Marketing</option>
-            <option value="Tecnología">Tecnología</option>
-            <option value="Atención al Cliente">Atención al Cliente</option>
-        </select>
-
-        <button type="submit">Enviar</button>
-    </form>
-</div>
-</body>
-</html>
