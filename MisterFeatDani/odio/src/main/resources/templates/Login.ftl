@@ -13,7 +13,7 @@
 <div class="login-container">
     <h2>Bienvenido</h2>
     <p>Por favor, inicia sesión para continuar</p>
-    <form action="/interfaz" method="POST">
+    <form action="/login" method="POST">
         <div class="input-group">
             <label for="usuario">Usuario</label>
             <input type="text" id="usuario" name="usuario" required>
@@ -32,7 +32,7 @@
         <button type="submit">Ingresar</button>
     </form>
 
-    <p>¿No tienes cuenta todavía? <a href="registro">Registrarse</a></p>
+    <p>¿No tienes cuenta todavía? <a href="register">Registrarse</a></p>
 </div>
 </body>
 </html>

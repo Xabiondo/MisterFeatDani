@@ -11,7 +11,7 @@
 <div class="login-container">
     <h2>Registro</h2>
     <p>Por favor, completa el siguiente formulario para crear una cuenta</p>
-    <form action="/registro" method="POST">
+    <form action="/register" method="POST">
         <div class="input-group">
             <label for="usuario">Nombre de usuario</label>
             <input type="text" id="usuario" name="usuario" required>

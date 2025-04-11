@@ -1,6 +1,7 @@
 package org.example;
 
 import io.javalin.Javalin;
+import io.javalin.http.Handler;
 import io.javalin.rendering.template.JavalinFreemarker;
 import freemarker.template.Configuration;
 
@@ -10,6 +11,8 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         // Inicializar la base de datos
+
+
         DatabaseManager.connect();
         DatabaseManager.initializeDatabase();
 
@@ -54,21 +57,51 @@ public class Main {
                 ctx.sessionAttribute("password", password);
 
                 // Redirigir al usuario a la página principal
+
+
                 ctx.redirect("/interfaz");
+
             } else {
                 ctx.result("Nombre de usuario o contraseña incorrectos.");
             }
         });
+        app.get("/interfaz", ctx -> {
+            // Verificar si el usuario tiene una sesión activa
+            String nombre = ctx.sessionAttribute("nombre");
+            if (nombre == null) {
+                // Si no hay sesión activa, redirigir al inicio de sesión
+                ctx.redirect("/");
+                return;
+            }
+
+            // Obtener los datos del usuario desde la base de datos
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            Usuario usuario = usuarioDAO.obtenerPorNombre(nombre);
+
+            if (usuario == null) {
+                ctx.result("Error: Usuario no encontrado.");
+                return;
+            }
+
+            // Crear el modelo con los datos del usuario
+            Map<String, Object> model = new HashMap<>();
+            model.put("title", "Fantasy Liga - Interfaz");
+            model.put("nombreUsuario", usuario.getNombre());
+            model.put("dineroDisponible", usuario.getDinero());
+
+            // Renderizar la página principal con los datos del usuario
+            ctx.render("Interface.ftl", model);
+        });
 
         // Ruta GET para mostrar el formulario de registro
-        app.get("/registro", ctx -> {
+        app.get("/register", ctx -> {
             Map<String, Object> model = new HashMap<>();
             model.put("title", "Registro de Usuario");
             ctx.render("Register.ftl", model); // Renderiza la plantilla "Register.ftl"
         });
 
         // Ruta POST para procesar el formulario de registro
-        app.post("/registro", ctx -> {
+        app.post("/register", ctx -> {
             String nombre = ctx.formParam("usuario");
             String password = ctx.formParam("password");
 
@@ -89,18 +122,27 @@ public class Main {
             }
         });
 
-        // Ruta GET para la página principal (protegida)
-        app.get("/interfaz", ctx -> {
+
+        JugadorDAO dao = new JugadorDAO();
+        // Crear un nuevo jugador
+        Jugador jugador = new Jugador("Lionel Messi", "PSG", 100000000);
+
+        // Guardar el jugador en la base de datos
+        System.out.println("Guardando jugador...");
+        dao.guardar(jugador);
+
+        Handler authMiddleware = ctx -> {
             String nombre = ctx.sessionAttribute("nombre");
+            if (nombre == null) {
+                ctx.redirect("/");
+            }
+        };
 
-            Map<String, Object> model = new HashMap<>();
-            model.put("title", "Página Principal");
-            model.put("nombreUsuario", nombre);
+// Aplicar el middleware a rutas protegidas
+        app.before("/interfaz", authMiddleware);
 
-            ctx.render("Interface.ftl", model);
-        });
 
-        // Ruta GET para "Poner jugador a subasta" (protegida)
+        /*// Ruta GET para "Poner jugador a subasta" (protegida)
         app.get("/poner-subasta", ctx -> {
             String nombre = ctx.sessionAttribute("nombre");
 
@@ -149,6 +191,6 @@ public class Main {
             ctx.sessionAttribute("nombre", null);
             ctx.sessionAttribute("password", null);
             ctx.redirect("/");
-        });
+        });*/
     }
 }
