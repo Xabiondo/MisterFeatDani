@@ -4,7 +4,7 @@
              version="3.0">
 
     <!-- Definición de la unidad de persistencia -->
-    <persistence-unit name="org.example">
+    <persistence-unit name="org.example" transaction-type="RESOURCE_LOCAL">
         <!-- Lista de entidades -->
         <class>org.example.Usuario</class>
         <class>org.example.Jugador</class>
