@@ -19,7 +19,7 @@
     <button class="menu-button"><a href="/poner-subasta">Poner jugador a subasta</a></button>
     <button class="menu-button"><a href="/Mercado">Mercado</a></button>
     <button class="menu-button"><a href="/Equipo">Ver mi equipo</a></button>
-    <button class="menu-button"><a href="/ver-dinero">Ver mi dinero disponible</a></button>
+    <button class="menu-button"><a href="/Ayuda">Ayuda</a></button>
     <button class="menu-button"><a href="/logout">Cerrar sesión</a></button>
 </div>
 

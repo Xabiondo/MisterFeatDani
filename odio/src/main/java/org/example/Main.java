@@ -12,6 +12,7 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         // Inicializar la base de datos
+        //DatabaseManager.inicializarBaseDeDatos();
 
 
         DatabaseManager.connect();
@@ -153,75 +154,51 @@ public class Main {
         });
 
 
-
-       // JugadorDAO dao = new JugadorDAO();
-        // Crear un nuevo jugador
-        //Jugador jugador = new Jugador("Lionel Messi", "PSG", 100000000);
-
-        // Guardar el jugador en la base de datos
-      //  System.out.println("Guardando jugador...");
-      //  dao.guardar(jugador);
-
-        Handler authMiddleware = ctx -> {
+      /*  Handler authMiddleware = ctx -> {
             String nombre = ctx.sessionAttribute("nombre");
             if (nombre == null) {
                 ctx.redirect("/");
             }
-        };
-
-// Aplicar el middleware a rutas protegidas
+        };*/
 
 
-
-        /*// Ruta GET para "Poner jugador a subasta" (protegida)
+        // Ruta GET para "Poner jugador a subasta" (protegida)
         app.get("/poner-subasta", ctx -> {
-            String nombre = ctx.sessionAttribute("nombre");
+
 
             Map<String, Object> model = new HashMap<>();
             model.put("title", "Poner Jugador a Subasta");
-            model.put("nombreUsuario", nombre);
+
 
             ctx.render("poner-subasta.ftl", model);
         });
 
         // Ruta GET para "Pujar por un jugador" (protegida)
-        app.get("/pujar-jugador", ctx -> {
+        app.get("/Equipo", ctx -> {
             String nombre = ctx.sessionAttribute("nombre");
 
             Map<String, Object> model = new HashMap<>();
             model.put("title", "Pujar por un Jugador");
             model.put("nombreUsuario", nombre);
 
-            ctx.render("pujar-jugador.ftl", model);
+            ctx.render("Equipo.ftl", model);
         });
 
-        // Ruta GET para "Ver mi equipo" (protegida)
-        app.get("/ver-equipo", ctx -> {
-            String nombre = ctx.sessionAttribute("nombre");
 
+        app.get("/Ayuda", ctx -> {
             Map<String, Object> model = new HashMap<>();
             model.put("title", "Ver Mi Equipo");
-            model.put("nombreUsuario", nombre);
 
-            ctx.render("ver-equipo.ftl", model);
+            ctx.render("Ayuda.ftl", model);
         });
 
-        // Ruta GET para "Ver mi dinero disponible" (protegida)
-        app.get("/ver-dinero", ctx -> {
-            String nombre = ctx.sessionAttribute("nombre");
 
-            Map<String, Object> model = new HashMap<>();
-            model.put("title", "Ver Mi Dinero Disponible");
-            model.put("nombreUsuario", nombre);
-
-            ctx.render("ver-dinero.ftl", model);
-        });
 
         // Ruta GET para cerrar sesión
         app.get("/logout", ctx -> {
             ctx.sessionAttribute("nombre", null);
             ctx.sessionAttribute("password", null);
             ctx.redirect("/");
-        });*/
+        });
     }
 }
