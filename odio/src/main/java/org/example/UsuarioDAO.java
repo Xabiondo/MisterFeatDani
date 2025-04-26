@@ -103,6 +103,33 @@ public class UsuarioDAO {
             entityManager.close();
         }
     }
+
+
+    public Integer obtenerIdPorNombre(String nombre) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try {
+            // Consulta JPQL para seleccionar solo el ID del usuario por su nombre
+            String jpql = "SELECT u.id FROM Usuario u WHERE u.nombre = :nombre";
+            TypedQuery<Integer> query = entityManager.createQuery(jpql, Integer.class);
+            query.setParameter("nombre", nombre); // Asignamos el parámetro "nombre" a la consulta
+
+            // Ejecutamos la consulta y obtenemos el resultado
+            List<Integer> resultados = query.getResultList();
+
+            // Si se encontró un ID, lo devolvemos; de lo contrario, retornamos null
+            return resultados.isEmpty() ? null : resultados.get(0);
+        } catch (Exception e) {
+            // Manejamos cualquier error que ocurra durante la consulta
+            System.err.println("Error al obtener el ID del usuario: " + e.getMessage());
+            return null;
+        } finally {
+            // Cerramos el EntityManager para liberar recursos
+            if (entityManager != null && entityManager.isOpen()) {
+                entityManager.close();
+            }
+        }
+    }
+
     public Boolean estaRegistrado(String nombre) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {

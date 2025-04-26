@@ -17,6 +17,10 @@ public class Jugador {
 
     @Column(nullable = false)
     private double precio;
+    // Relación con Usuario (Muchos jugadores pertenecen a un usuario)
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id")
+    private Usuario usuario;
 
     // Constructor vacío (requerido por Hibernate)
     public Jugador() {}
@@ -59,5 +63,9 @@ public class Jugador {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

@@ -12,7 +12,9 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         // Inicializar la base de datos
-        //DatabaseManager.inicializarBaseDeDatos();
+        DatabaseManager.inicializarBaseDeDatos();
+        //tienes que tener el workbench la base de datos creada, este metodo solo crea las tablas
+        // create database fantasy_liga
 
 
         DatabaseManager.connect();
@@ -118,6 +120,7 @@ public class Main {
 
             // Crear una instancia del DAO
             UsuarioDAO usuarioDAO = new UsuarioDAO();
+            JugadorDAO jugadorDAO = new JugadorDAO();
 
             // Verificar si el usuario ya está registrado
             if (usuarioDAO.estaRegistrado(nombre)) {
@@ -126,15 +129,24 @@ public class Main {
             }
 
             // Registrar al usuario en la base de datos
-            boolean registrado = usuarioDAO.estaRegistrado(nombre);
+            Usuario nuevoUsuario = new Usuario(nombre, password);
+            usuarioDAO.guardar(nuevoUsuario);
 
-            // Respuesta al usuario
-            if (!registrado) {
-                usuarioDAO.guardar(new Usuario(nombre, password));
-                ctx.result("El usuario se ha registrado correctamente.");
+            // Obtener el ID del usuario recién registrado
+            Integer usuarioId = usuarioDAO.obtenerIdPorNombre(nombre);
+
+            if (usuarioId == null) {
+                ctx.result("Error al obtener el ID del usuario.");
+                return;
+            }
+
+            // Asignar 5 jugadores aleatorios al usuario
+            try {
+                jugadorDAO.asignarJugadoresAleatoriosAUsuario(usuarioId);
+                ctx.result("El usuario se ha registrado correctamente y se le han asignado 5 jugadores.");
                 ctx.redirect("/");
-            } else {
-                ctx.result("Error al registrar usuario. Inténtalo de nuevo.");
+            } catch (Exception e) {
+                ctx.result("Error al asignar jugadores al usuario: " + e.getMessage());
             }
         });
 
@@ -143,7 +155,7 @@ public class Main {
         app.get("/Mercado", ctx -> {
             // Obtener todos los jugadores desde la base de datos
             JugadorDAO jugadorDAO = new JugadorDAO();
-            List<Jugador> jugadores = jugadorDAO.obtenerTodosLosJugadores();
+            List<Jugador> jugadores = jugadorDAO.obtenerJugadoresSinUsuario();
 
             // Crear el modelo para FreeMarker
             Map<String, Object> model = new HashMap<>();
@@ -164,12 +176,21 @@ public class Main {
 
         // Ruta GET para "Poner jugador a subasta" (protegida)
         app.get("/poner-subasta", ctx -> {
+            // Obtener el ID del usuario logueado (puedes ajustar esto según cómo manejes la autenticación)
+            int idUsuario = 1; // Ejemplo: supongamos que el ID del usuario es 1
 
-
+            // Crear un modelo para pasar datos a la vista
             Map<String, Object> model = new HashMap<>();
+
+            // Obtener el inventario del usuario (jugadores asignados a este usuario)
+            JugadorDAO jugadorDAO = new JugadorDAO();
+            List<Jugador> inventario = jugadorDAO.obtenerJugadoresPorUsuario(idUsuario);
+
+            // Agregar el inventario al modelo
             model.put("title", "Poner Jugador a Subasta");
+            model.put("inventario", inventario);
 
-
+            // Renderizar la vista
             ctx.render("poner-subasta.ftl", model);
         });
 

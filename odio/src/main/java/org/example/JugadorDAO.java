@@ -1,9 +1,6 @@
 package org.example;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -16,11 +13,11 @@ public class JugadorDAO {
         this.entityManagerFactory = Persistence.createEntityManagerFactory("org.example");
     }
 
-    public List<Jugador> obtenerTodosLosJugadores() {
+    public List<Jugador> obtenerJugadoresSinUsuario() {
         EntityManager entityManager = null;
         try {
             entityManager = entityManagerFactory.createEntityManager();
-            String jpql = "SELECT j FROM Jugador j";
+            String jpql = "SELECT j FROM Jugador j WHERE j.usuario IS NULL";
             TypedQuery<Jugador> query = entityManager.createQuery(jpql, Jugador.class);
             return query.getResultList();
         } finally {
@@ -29,6 +26,46 @@ public class JugadorDAO {
             }
         }
     }
+
+   //Espera, primero un método que devuleva el id de un jugador
+   public void asignarJugadoresAleatoriosAUsuario(int idUsuario) {
+       EntityManager entityManager = null;
+       EntityTransaction transaction = null;
+       try {
+           entityManager = entityManagerFactory.createEntityManager();
+           transaction = entityManager.getTransaction();
+           transaction.begin();
+
+           // Paso 1: Obtener 5 jugadores aleatorios con id_usuario IS NULL
+           String sqlSelect = "SELECT * FROM jugadores WHERE id_usuario IS NULL ORDER BY RAND() LIMIT ?";
+           Query querySelect = entityManager.createNativeQuery(sqlSelect, Jugador.class);
+           querySelect.setParameter(1, 5); // Limitar el número de resultados
+
+           List<Jugador> jugadoresAleatorios = querySelect.getResultList();
+
+           // Validar que se hayan encontrado suficientes jugadores
+           if (jugadoresAleatorios.isEmpty()) {
+               throw new RuntimeException("No hay suficientes jugadores disponibles para asignar.");
+           }
+
+           // Paso 2: Actualizar la clave foránea (id_usuario) de los jugadores seleccionados
+           for (Jugador jugador : jugadoresAleatorios) {
+               jugador.setUsuario(new Usuario(idUsuario)); // Asignar el usuario usando su ID
+               entityManager.merge(jugador); // Actualizar el jugador en la base de datos
+           }
+
+           transaction.commit();
+       } catch (Exception e) {
+           if (transaction != null && transaction.isActive()) {
+               transaction.rollback(); // Revertir cambios en caso de error
+           }
+           throw new RuntimeException("Error al asignar jugadores aleatorios al usuario", e);
+       } finally {
+           if (entityManager != null && entityManager.isOpen()) {
+               entityManager.close(); // Cerrar el EntityManager
+           }
+       }
+   }
 
     public void guardar(Jugador jugador) {
         EntityManager entityManager = null;
@@ -54,6 +91,23 @@ public class JugadorDAO {
         try {
             entityManager = entityManagerFactory.createEntityManager();
             return entityManager.find(Jugador.class, id);
+        } finally {
+            if (entityManager != null && entityManager.isOpen()) {
+                entityManager.close();
+            }
+        }
+    }
+    public List<Jugador> obtenerJugadoresPorUsuario(int idUsuario) {
+        EntityManager entityManager = null;
+        try {
+            entityManager = entityManagerFactory.createEntityManager();
+
+            // Consulta JPQL para obtener jugadores con id_usuario igual al ID proporcionado
+            String jpql = "SELECT j FROM Jugador j WHERE j.usuario.id = :idUsuario";
+            TypedQuery<Jugador> query = entityManager.createQuery(jpql, Jugador.class);
+            query.setParameter("idUsuario", idUsuario);
+
+            return query.getResultList();
         } finally {
             if (entityManager != null && entityManager.isOpen()) {
                 entityManager.close();

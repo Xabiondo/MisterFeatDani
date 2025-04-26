@@ -36,6 +36,10 @@ public class Usuario {
         this.dinero = 100000; // Valor predeterminado
     }
 
+    public Usuario(int idUsuario) {
+        this.id = idUsuario; // Asignar el ID proporcionado
+    }
+
     // Getters y setters
     public int getId() {
         return id;
