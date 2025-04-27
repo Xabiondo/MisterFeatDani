@@ -114,6 +114,27 @@ public class JugadorDAO {
             }
         }
     }
+    public Jugador obtenerPorNombre(String nombre) {
+        EntityManager entityManager = null;
+        try {
+            entityManager = entityManagerFactory.createEntityManager();
+
+            // Consulta JPQL para buscar un jugador por su nombre
+            String jpql = "SELECT j FROM Jugador j WHERE j.nombre = :nombre";
+            TypedQuery<Jugador> query = entityManager.createQuery(jpql, Jugador.class);
+            query.setParameter("nombre", nombre);
+
+            return query.getSingleResult(); // Devuelve el jugador encontrado (o lanza excepción si no existe)
+        } catch (NoResultException e) {
+            // Si no se encuentra ningún jugador, devolvemos null
+            return null;
+        } finally {
+            if (entityManager != null && entityManager.isOpen()) {
+                entityManager.close(); // Cerrar el EntityManager
+            }
+        }
+    }
+
 
     public void actualizar(Jugador jugador) {
         EntityManager entityManager = null;

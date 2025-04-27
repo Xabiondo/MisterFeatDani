@@ -1,9 +1,6 @@
 package org.example;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -43,6 +40,29 @@ public class SubastaDAO {
         } finally {
             if (entityManager != null && entityManager.isOpen()) {
                 entityManager.close();
+            }
+        }
+    }
+    public static void guardar(Subasta subasta) {
+        EntityManager entityManager = null;
+        EntityTransaction transaction = null;
+
+        try {
+            entityManager = entityManagerFactory.createEntityManager();
+            transaction = entityManager.getTransaction();
+            transaction.begin();
+
+            entityManager.persist(subasta); // Guardar la subasta
+
+            transaction.commit(); // Confirmar la transacción
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback(); // Revertir la transacción en caso de error
+            }
+            throw new RuntimeException("Error al guardar la subasta", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen()) {
+                entityManager.close(); // Cerrar el EntityManager
             }
         }
     }

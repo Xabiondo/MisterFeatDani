@@ -22,6 +22,9 @@ public class Jugador {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     private Usuario usuario;
 
+    @OneToOne(mappedBy = "jugador", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
+    private Subasta subasta;
+
     // Constructor vacío (requerido por Hibernate)
     public Jugador() {}
 

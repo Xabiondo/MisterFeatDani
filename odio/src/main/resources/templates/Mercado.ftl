@@ -9,34 +9,36 @@
 <h1>Mercado de Jugadores de Fútbol</h1>
 
 <!-- Formulario de búsqueda -->
-<h2>Buscar Jugador</h2>
+<h2>Buscar Subasta</h2>
 <form action="/buscar" method="get">
     <label for="nombre">Nombre del jugador:</label>
     <input type="text" id="nombre" name="nombre" placeholder="Ej: Lionel Messi">
     <button type="submit">Buscar</button>
 </form>
 
-<!-- Lista de jugadores disponibles -->
-<h2>Jugadores Disponibles</h2>
+<!-- Lista de subastas activas -->
+<h2>Subastas Activas</h2>
 <table border="1">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Equipo</th>
-        <th>Precio</th>
+        <th>ID Subasta</th>
+        <th>Jugador</th>
+        <th>Equipo del Jugador</th>
+        <th>Precio de Salida</th>
+        <th>Fecha de Inicio</th>
+        <th>Vendedor</th>
         <th>Acción</th>
     </tr>
     </thead>
     <tbody>
-    <!-- Iteramos sobre la lista de jugadores -->
-    <#list jugadores as jugador>
+    <!-- Iteramos sobre la lista de subastas -->
+    <#list subastas as subasta>
         <tr>
-            <td>${jugador.id}</td>
-            <td>${jugador.nombre}</td>
-            <td>${jugador.equipo}</td>
-            <td>${jugador.precio} €</td>
-            <td><button>Fichar</button></td>
+            <td>${subasta.id}</td>
+            <td>${subasta.jugador.nombre}</td>
+            <td>${subasta.jugador.equipo}</td>
+            <td>${subasta.precioSalida} €</td>
+            <td><button>Pujar</button></td>
         </tr>
     </#list>
     </tbody>

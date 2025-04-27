@@ -36,7 +36,7 @@ public class DatabaseManager {
     CREATE TABLE IF NOT EXISTS usuarios (
         id INT AUTO_INCREMENT PRIMARY KEY,
         nombre VARCHAR(100) NOT NULL,
-        contrasena VARCHAR(100) NOT NULL,
+        contraseña VARCHAR(100) NOT NULL,
         rol VARCHAR(50) DEFAULT 'usuario',
         dinero DOUBLE DEFAULT 1000000
     );
@@ -59,10 +59,10 @@ public class DatabaseManager {
     CREATE TABLE IF NOT EXISTS subastas (
         id INT AUTO_INCREMENT PRIMARY KEY,
         id_jugador INT NOT NULL,
-        precio_salida DOUBLE NOT NULL,
-        esta_activa BOOLEAN DEFAULT TRUE,
-        fecha_inicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        fecha_fin TIMESTAMP NULL,
+        precioSalida DOUBLE NOT NULL default 1000000,
+        estaActiva BOOLEAN DEFAULT TRUE,
+        fechaInicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        fechaFin TIMESTAMP NULL,
         FOREIGN KEY (id_jugador) REFERENCES jugadores(id)
     );
     """;
