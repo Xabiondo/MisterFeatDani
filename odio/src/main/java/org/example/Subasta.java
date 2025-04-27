@@ -11,7 +11,7 @@ public class Subasta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "id_jugador", nullable = false)
     private Jugador jugador;
 

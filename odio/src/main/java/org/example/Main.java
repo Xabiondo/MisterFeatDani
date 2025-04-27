@@ -155,13 +155,13 @@ public class Main {
 
 
         app.get("/Mercado", ctx -> {
-            // Obtener todos los jugadores desde la base de datos
-            JugadorDAO jugadorDAO = new JugadorDAO();
-            List<Jugador> jugadores = jugadorDAO.obtenerJugadoresSinUsuario();
+            // Obtener todas las subastas activas
+
+            List<Subasta> subastasActivas = SubastaDAO.obtenerSubastasActivas();
 
             // Crear el modelo para FreeMarker
             Map<String, Object> model = new HashMap<>();
-            model.put("jugadores", jugadores);
+            model.put("subastas", subastasActivas);
 
             // Renderizar la plantilla Mercado.ftl
             ctx.render("Mercado.ftl", model);
@@ -178,22 +178,77 @@ public class Main {
 
         // Ruta GET para "Poner jugador a subasta" (protegida)
         app.get("/poner-subasta", ctx -> {
-            // Obtener el ID del usuario logueado (puedes ajustar esto según cómo manejes la autenticación)
-            int idUsuario = 1; // Ejemplo: supongamos que el ID del usuario es 1
+            // Verificar si el usuario tiene una sesión activa
+            String nombreUsuario = ctx.sessionAttribute("nombre");
+            if (nombreUsuario == null) {
+                ctx.redirect("/");
+                return;
+            }
 
-            // Crear un modelo para pasar datos a la vista
-            Map<String, Object> model = new HashMap<>();
+            // Obtener el ID del usuario logueado
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            Integer idUsuario = usuarioDAO.obtenerIdPorNombre(nombreUsuario);
+
+            if (idUsuario == null) {
+                ctx.result("Error: No se pudo obtener el ID del usuario.");
+                return;
+            }
 
             // Obtener el inventario del usuario (jugadores asignados a este usuario)
             JugadorDAO jugadorDAO = new JugadorDAO();
             List<Jugador> inventario = jugadorDAO.obtenerJugadoresPorUsuario(idUsuario);
 
-            // Agregar el inventario al modelo
+            // Validar si el inventario está vacío
+            if (inventario == null || inventario.isEmpty()) {
+                ctx.result("No tienes jugadores asignados para poner a subasta.");
+                return;
+            }
+
+            // Crear el modelo para FreeMarker
+            Map<String, Object> model = new HashMap<>();
             model.put("title", "Poner Jugador a Subasta");
+            model.put("nombreUsuario", nombreUsuario);
             model.put("inventario", inventario);
 
             // Renderizar la vista
             ctx.render("poner-subasta.ftl", model);
+        });
+
+        app.post("/subastar-jugador", ctx -> {
+            // Obtener el nombre del jugador y el precio de salida del formulario
+            String nombreJugador = ctx.formParam("jugador");
+            String precioSalidaStr = ctx.formParam("precio");
+            System.out.println(precioSalidaStr);
+
+            // Convertir el precio de salida a double
+            double precioSalida;
+            try {
+                precioSalida = Double.parseDouble(precioSalidaStr);
+            } catch (NumberFormatException e) {
+                ctx.result("El precio de salida debe ser un número válido.");
+                return;
+            }
+
+            if (precioSalida <= 0) {
+                ctx.result("El precio de salida debe ser mayor que cero.");
+                return;
+            }
+
+            // Obtener el jugador seleccionado
+            JugadorDAO jugadorDAO = new JugadorDAO();
+            Jugador jugador = jugadorDAO.obtenerPorNombre(nombreJugador);
+
+            if (jugador == null) {
+                ctx.result("El jugador seleccionado no existe.");
+                return;
+            }
+
+            // Crear la subasta
+            Subasta subasta = new Subasta(jugador, precioSalida);
+            SubastaDAO.guardar(subasta);
+
+            // Redirigir al usuario con un mensaje de éxito
+            ctx.redirect("/interfaz?mensaje=Jugador%20subastado%20correctamente");
         });
 
         // Ruta GET para "Pujar por un jugador" (protegida)
