@@ -66,6 +66,18 @@ public class SubastaDAO {
             }
         }
     }
+    public static List<Subasta> buscarPorNombreJugador(String nombreJugador) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        try {
+            String jpql = "SELECT s FROM Subasta s WHERE LOWER(s.jugador.nombre) LIKE :nombre AND s.estaActiva = true";
+            TypedQuery<Subasta> query = em.createQuery(jpql, Subasta.class);
+            query.setParameter("nombre", "%" + nombreJugador.toLowerCase() + "%");
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
 
     // Finalizar una subasta
     public static void finalizarSubasta(int idSubasta) {
