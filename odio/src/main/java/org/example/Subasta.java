@@ -15,6 +15,10 @@ public class Subasta {
     @JoinColumn(name = "id_jugador", nullable = false)
     private Jugador jugador;
 
+    @ManyToOne
+    @JoinColumn(name = "id_vendedor", nullable = false)
+    private Usuario vendedor;
+
     @Column(nullable = false)
     private double precioSalida;
 
@@ -33,16 +37,25 @@ public class Subasta {
     }
 
     // Constructor con parámetros
-    public Subasta(Jugador jugador, double precioSalida) {
+    public Subasta(Jugador jugador, double precioSalida , Usuario usuario) {
         this.jugador = jugador;
         this.precioSalida = precioSalida;
         this.fechaInicio = LocalDateTime.now();
         this.estaActiva = true;
+        this.vendedor = usuario;
     }
 
     // Getters y Setters
     public int getId() {
         return id;
+    }
+
+    public Usuario getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Usuario vendedor) {
+        this.vendedor = vendedor;
     }
 
     public void setId(int id) {

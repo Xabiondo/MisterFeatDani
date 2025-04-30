@@ -22,6 +22,8 @@ public class Usuario {
     @Column(nullable = false)
     private int dinero;
 
+
+
     // Constructor vacío (requerido por Hibernate)
     public Usuario() {
         this.rol = "usuario"; // Valor predeterminado

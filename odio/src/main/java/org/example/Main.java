@@ -5,6 +5,8 @@ import io.javalin.http.Handler;
 import io.javalin.rendering.template.JavalinFreemarker;
 import freemarker.template.Configuration;
 
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,8 +62,12 @@ public class Main {
             // Verificar si el usuario existe en la base de datos
             if (usuarioDAO.existeUsuario(nombre, password)) {
                 // Guardar los datos del usuario en la sesión
+                UsuarioDAO user = new UsuarioDAO();
+                int idUser = user.obtenerIdPorNombre(nombre);
+
                 ctx.sessionAttribute("nombre", nombre);
                 ctx.sessionAttribute("password", password);
+                ctx.sessionAttribute("idUsuario"  , idUser);
 
                 // Redirigir al usuario a la página principal
                 ctx.redirect("/interfaz");
@@ -155,6 +161,7 @@ public class Main {
         app.get("/Mercado", ctx -> {
             // Obtener todas las subastas activas
 
+
             List<Subasta> subastasActivas = SubastaDAO.obtenerSubastasActivas();
 
             // Crear el modelo para FreeMarker
@@ -164,6 +171,17 @@ public class Main {
             // Renderizar la plantilla Mercado.ftl
             ctx.render("Mercado.ftl", model);
         });
+        app.get("/buscar", ctx -> {
+            String nombreJugador = ctx.queryParam("nombre"); // Lee el parámetro de la URL
+            List<Subasta> resultados = new ArrayList<>();
+            if (nombreJugador != null && !nombreJugador.trim().isEmpty()) {
+                resultados = SubastaDAO.buscarPorNombreJugador(nombreJugador.trim());
+            }
+            Map<String, Object> model = new HashMap<>();
+            model.put("subastas", resultados);
+            ctx.render("Mercado.ftl", model); // Reutiliza la plantilla para mostrar los resultados
+        });
+
 
 
       /*  Handler authMiddleware = ctx -> {
@@ -216,6 +234,8 @@ public class Main {
             // Obtener el nombre del jugador y el precio de salida del formulario
             String nombreJugador = ctx.formParam("jugador");
             String precioSalidaStr = ctx.formParam("precio");
+            UsuarioDAO user = new UsuarioDAO();
+            Usuario usuario = user.obtenerPorId(ctx.sessionAttribute("idUsuario"));
             System.out.println(precioSalidaStr);
 
             // Convertir el precio de salida a double
@@ -242,7 +262,7 @@ public class Main {
             }
 
             // Crear la subasta
-            Subasta subasta = new Subasta(jugador, precioSalida);
+            Subasta subasta = new Subasta(jugador, precioSalida , usuario);
             SubastaDAO.guardar(subasta);
 
             // Redirigir al usuario con un mensaje de éxito
