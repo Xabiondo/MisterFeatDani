@@ -126,6 +126,66 @@ public class Main {
         });
 
 
+// GET: Muestra la interfaz con el dinero y el botón
+        app.get("/ganar-dinero", ctx -> {
+            String nombre = ctx.sessionAttribute("nombre");
+            if (nombre == null) {
+                ctx.redirect("/");
+                return;
+            }
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            Usuario usuario = usuarioDAO.obtenerPorNombre(nombre);
+
+            // Obtener una pregunta aleatoria de la base de datos
+            PreguntaDAO preguntaDAO = new PreguntaDAO();
+            Pregunta pregunta = preguntaDAO.obtenerPreguntaAleatoria();
+            if (pregunta == null) {
+                ctx.result("No hay preguntas en la base de datos.");
+                return;
+            }
+
+            Map<String, Object> model = new HashMap<>();
+            model.put("title", "Fantasy Liga - Pregunta para ganar dinero");
+            model.put("nombreUsuario", usuario.getNombre());
+            model.put("dineroDisponible", usuario.getDinero());
+            model.put("pregunta", pregunta); // Pasa el objeto pregunta al FTL
+            model.put("mensaje", ctx.queryParam("mensaje"));
+            ctx.render("preguntas.ftl", model);
+        });
+// POST: Suma dinero y recarga la interfaz
+        app.post("/ganar-dinero", ctx -> {
+            String nombre = ctx.sessionAttribute("nombre");
+            if (nombre == null) {
+                ctx.redirect("/");
+                return;
+            }
+            int preguntaId = Integer.parseInt(ctx.formParam("id"));
+            String respuestaUsuario = ctx.formParam("respuesta");
+
+            PreguntaDAO preguntaDAO = new PreguntaDAO();
+            Pregunta pregunta = preguntaDAO.obtenerPorId(preguntaId);
+
+            boolean acertada = pregunta.getRespuesta().equalsIgnoreCase(respuestaUsuario.trim());
+
+            String mensaje;
+            if (acertada) {
+                UsuarioDAO usuarioDAO = new UsuarioDAO();
+                Usuario usuario = usuarioDAO.obtenerPorNombre(nombre);
+                usuario.setDinero(usuario.getDinero() + 1000);
+                usuarioDAO.actualizar(usuario);
+                mensaje = "¡Correcto! Has ganado 1000 euros.";
+            } else {
+                mensaje = "Incorrecto. Inténtalo de nuevo.";
+            }
+            ctx.redirect("/ganar-dinero?mensaje=" + java.net.URLEncoder.encode(mensaje, "UTF-8"));
+        });
+
+
+
+
+
+
+
 
 
 

@@ -82,23 +82,33 @@ CREATE TABLE IF NOT EXISTS subastas (
     );
     """;
 
+        // Crear la tabla preguntas
+        String crearTablaPreguntas = """
+CREATE TABLE IF NOT EXISTS preguntas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    enunciado VARCHAR(255) NOT NULL,
+    respuesta VARCHAR(255) NOT NULL
+);
+""";
+
         try (Connection conn = connect();
              Statement stmt = conn.createStatement()) {
 
             // Paso 1: Crear la base de datos si no existe
             stmt.executeUpdate(crearBaseDeDatos);
-            System.out.println("Base de datos 'fantasy_liga' creada correctamente (si no existía).");
+            System.out.println("Base de datos 'fantasy_liga' creada correctamente (si no existía).\n");
 
             // Paso 2: Usar la base de datos
             stmt.executeUpdate(usarBaseDeDatos);
-            System.out.println("Usando la base de datos 'fantasy_liga'.");
+            System.out.println("Usando la base de datos 'fantasy_liga'.\n");
 
             // Paso 3: Crear las tablas si no existen
             stmt.executeUpdate(crearTablaUsuarios);
             stmt.executeUpdate(crearTablaJugadores);
             stmt.executeUpdate(crearTablaSubastas);
             stmt.executeUpdate(crearTablaPujas);
-            System.out.println("Tablas creadas correctamente (si no existían).");
+            stmt.executeUpdate(crearTablaPreguntas);
+            System.out.println("Tablas creadas correctamente (si no existían).\n");
 
         } catch (SQLException e) {
             System.err.println("Error al inicializar la base de datos: " + e.getMessage());
