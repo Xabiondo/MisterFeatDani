@@ -92,9 +92,7 @@ box-shadow: 0 0 10px #00d9ff;
    <a href="/poner-subasta">Subastar</a>
    <a href="/Ayuda">Ayuda</a>
    <a href="/logout">Cerrar sesión</a>
-  <#if rol?exists && rol == "admin">
-    <a href="/admin">Admin Panel</a>
-  </#if>
+
   </div>
 </div>
 
@@ -108,7 +106,7 @@ box-shadow: 0 0 10px #00d9ff;
     <button class="menu-button"><a href="/Equipo">Ver mi equipo</a></button>
     <button class="menu-button"><a href="/Ayuda">Ayuda</a></button>
     <button class="menu-button"><a href="/logout">Cerrar sesión</a></button>
-    <button class="menu-button"><a href="/Preguntas">Financiarse</a></button>
+    <button class="menu-button"><a href="/ganar-dinero">Financiarse</a></button>
   </div>
 </div>
 
