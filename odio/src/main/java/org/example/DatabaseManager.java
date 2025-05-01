@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class DatabaseManager {
     // Configuración de la conexión a la base de datos
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/"; // URL base sin especificar la base de datos
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/fantasy_liga"; // URL base sin especificar la base de datos
     private static final String USER = "root"; // Usuario de MySQL
     private static final String PASSWORD = "root"; // Contraseña de MySQL (cámbiala si es necesario)
 

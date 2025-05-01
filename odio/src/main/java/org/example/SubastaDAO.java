@@ -28,6 +28,49 @@ public class SubastaDAO {
         }
     }
 
+    // Obtener una subasta por su ID
+    public static Subasta obtenerPorId(int idSubasta) {
+        EntityManager entityManager = null;
+        try {
+            entityManager = entityManagerFactory.createEntityManager();
+            // El método find devuelve null si no existe
+            return entityManager.find(Subasta.class, idSubasta);
+        } finally {
+            if (entityManager != null && entityManager.isOpen()) {
+                entityManager.close();
+            }
+        }
+    }
+    // Eliminar una subasta por su ID
+    public static void eliminar(int idSubasta) {
+        EntityManager entityManager = null;
+        EntityTransaction transaction = null;
+
+        try {
+            entityManager = entityManagerFactory.createEntityManager();
+            transaction = entityManager.getTransaction();
+            transaction.begin();
+
+            Subasta subasta = entityManager.find(Subasta.class, idSubasta);
+            if (subasta != null) {
+                entityManager.remove(subasta);
+            }
+
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+            throw new RuntimeException("Error al eliminar la subasta", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen()) {
+                entityManager.close();
+            }
+        }
+    }
+
+
+
     // Obtener todas las subastas activas
     public static List<Subasta> obtenerSubastasActivas() {
         EntityManager entityManager = null;

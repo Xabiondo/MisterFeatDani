@@ -97,13 +97,14 @@ public class JugadorDAO {
             }
         }
     }
-    public List<Jugador> obtenerJugadoresPorUsuario(int idUsuario) {
+    public List<Jugador> obtenerJugadoresPorUsuarioSinSubastar(int idUsuario) {
         EntityManager entityManager = null;
         try {
             entityManager = entityManagerFactory.createEntityManager();
 
-            // Consulta JPQL para obtener jugadores con id_usuario igual al ID proporcionado
-            String jpql = "SELECT j FROM Jugador j WHERE j.usuario.id = :idUsuario";
+            // Consulta JPQL: solo jugadores del usuario que NO estén en subastas activas
+            String jpql = "SELECT j FROM Jugador j WHERE j.usuario.id = :idUsuario " +
+                    "AND j.id NOT IN (SELECT s.jugador.id FROM Subasta s WHERE s.estaActiva = true)";
             TypedQuery<Jugador> query = entityManager.createQuery(jpql, Jugador.class);
             query.setParameter("idUsuario", idUsuario);
 
@@ -114,6 +115,7 @@ public class JugadorDAO {
             }
         }
     }
+
     public Jugador obtenerPorNombre(String nombre) {
         EntityManager entityManager = null;
         try {

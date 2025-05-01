@@ -120,8 +120,13 @@ color: #888;
                         </#if>
                     </td>
                     <td>
-                        <button>Pujar</button>
+                        <form action="/Mercado" method="post" style="margin:0;">
+                            <input type="hidden" name="subastaId" value="${subasta.id}">
+                            <button type="submit">Comprar</button>
+                        </form>
                     </td>
+
+
                 </tr>
             </#list>
         </tbody>

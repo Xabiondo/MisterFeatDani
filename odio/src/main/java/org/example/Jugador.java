@@ -15,6 +15,9 @@ public class Jugador {
     @Column(nullable = false)
     private String equipo;
 
+
+
+
     @Column(nullable = false)
     private double precio;
     // Relación con Usuario (Muchos jugadores pertenecen a un usuario)
@@ -22,7 +25,7 @@ public class Jugador {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     private Usuario usuario;
 
-    @OneToOne(mappedBy = "jugador", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
+    @OneToOne(mappedBy = "jugador", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, optional = true)
     private Subasta subasta;
 
     // Constructor vacío (requerido por Hibernate)
@@ -33,6 +36,18 @@ public class Jugador {
         this.nombre = nombre;
         this.equipo = equipo;
         this.precio = precio;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public Subasta getSubasta() {
+        return subasta;
+    }
+
+    public void setSubasta(Subasta subasta) {
+        this.subasta = subasta;
     }
 
     // Getters y Setters

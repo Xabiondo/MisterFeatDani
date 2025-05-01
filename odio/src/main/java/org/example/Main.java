@@ -1,11 +1,9 @@
 package org.example;
 
 import io.javalin.Javalin;
-import io.javalin.http.Handler;
 import io.javalin.rendering.template.JavalinFreemarker;
 import freemarker.template.Configuration;
 
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -173,6 +171,67 @@ public class Main {
             // Renderizar la plantilla Mercado.ftl
             ctx.render("Mercado.ftl", model);
         });
+        app.post("/Mercado", ctx -> {
+            String nombreUsuario = ctx.sessionAttribute("nombre");
+            Integer idUsuario = ctx.sessionAttribute("idUsuario");
+            if (nombreUsuario == null || idUsuario == null) {
+                ctx.redirect("/");
+                return;
+            }
+
+            String subastaIdStr = ctx.formParam("subastaId");
+            if (subastaIdStr == null || subastaIdStr.isEmpty()) {
+                ctx.result("Error: ID de subasta no proporcionado.");
+                return;
+            }
+
+            int subastaId;
+            try {
+                subastaId = Integer.parseInt(subastaIdStr);
+            } catch (NumberFormatException e) {
+                ctx.result("Error: ID de subasta inválido.");
+                return;
+            }
+
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            Usuario comprador = usuarioDAO.obtenerPorId(idUsuario);
+            if (comprador == null) {
+                ctx.result("Error: Usuario no encontrado.");
+                return;
+            }
+
+            Subasta subasta = SubastaDAO.obtenerPorId(subastaId);
+            if (subasta == null) {
+                ctx.result("Error: La subasta no existe.");
+                return;
+            }
+            Jugador jugador = subasta.getJugador();
+
+            if (comprador.getDinero() < subasta.getPrecioSalida()) {
+                ctx.result("No tienes suficiente dinero para comprar este jugador.");
+                return;
+            }
+
+            // 1. Actualizar el dinero del comprador
+            comprador.setDinero((int) (comprador.getDinero() - subasta.getPrecioSalida()));
+            usuarioDAO.actualizar(comprador);
+
+            // 2. Cambiar el dueño del jugador y romper la relación con la subasta
+            JugadorDAO jugadorDAO = new JugadorDAO();
+            jugador.setUsuario(comprador);
+            jugador.setSubasta(null); // Rompe la relación
+            jugadorDAO.actualizar(jugador);
+
+            // 3. Eliminar la subasta
+            SubastaDAO.eliminar(4);
+
+            ctx.redirect("/Mercado?mensaje=Jugador%20comprado%20correctamente");
+        });
+
+
+
+
+
         app.get("/buscar", ctx -> {
             String nombreJugador = ctx.queryParam("nombre"); // Lee el parámetro de la URL
             List<Subasta> resultados = new ArrayList<>();
@@ -214,7 +273,7 @@ public class Main {
 
             // Obtener el inventario del usuario (jugadores asignados a este usuario)
             JugadorDAO jugadorDAO = new JugadorDAO();
-            List<Jugador> inventario = jugadorDAO.obtenerJugadoresPorUsuario(idUsuario);
+            List<Jugador> inventario = jugadorDAO.obtenerJugadoresPorUsuarioSinSubastar(idUsuario);
 
             // Validar si el inventario está vacío
             if (inventario == null || inventario.isEmpty()) {
