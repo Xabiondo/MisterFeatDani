@@ -83,12 +83,12 @@
     <div class="navbar">
       <div><strong style="color: #FFD700;">FantasyFútbol</strong></div>
       <div>
-        <a href="inicio.html">Inicio</a>
-        <a href="miequipo.html">Mi Equipo</a>
-        <a href="mercado.html">Mercado</a>
-        <a href="transacciones.html">Transacciones</a>
-        <a href="ayuda.html">Ayuda</a>
-        <a href="contacto.html">Contacto</a>
+         <a href="/interfaz">Inicio</a>
+         <a href="/Equipo">Mi Equipo</a>
+         <a href="/Mercado">Mercado</a>
+         <a href="/poner-subasta">Subastar</a>
+         <a href="/Ayuda">Ayuda</a>
+         <a href="/logout">Cerrar sesión</a>
       </div>
     </div>
 

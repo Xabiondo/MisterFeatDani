@@ -86,12 +86,12 @@ box-shadow: 0 0 10px #00d9ff;
 <div class="navbar">
   <div><strong style="color: #FFD700;">FantasyFútbol</strong></div>
   <div>
-    <a href="/interfaz">Inicio</a>
-    <a href="/Equipo">Mi Equipo</a>
-    <a href="/Mercado">Mercado</a>
-    <a href="/Ayuda">Ayuda</a>
-    <a href="/logout">Cerrar sesión</a>
-
+   <a href="/interfaz">Inicio</a>
+   <a href="/Equipo">Mi Equipo</a>
+   <a href="/Mercado">Mercado</a>
+   <a href="/poner-subasta">Subastar</a>
+   <a href="/Ayuda">Ayuda</a>
+   <a href="/logout">Cerrar sesión</a>
   <#if rol?exists && rol == "admin">
     <a href="/admin">Admin Panel</a>
   </#if>
@@ -108,7 +108,7 @@ box-shadow: 0 0 10px #00d9ff;
     <button class="menu-button"><a href="/Equipo">Ver mi equipo</a></button>
     <button class="menu-button"><a href="/Ayuda">Ayuda</a></button>
     <button class="menu-button"><a href="/logout">Cerrar sesión</a></button>
-    <button class="menu-button"><a href="/ganar-dinero">Financiarse</a></button>
+    <button class="menu-button"><a href="/Preguntas">Financiarse</a></button>
   </div>
 </div>
 
