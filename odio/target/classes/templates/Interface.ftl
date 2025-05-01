@@ -91,6 +91,10 @@ box-shadow: 0 0 10px #00d9ff;
     <a href="/Mercado">Mercado</a>
     <a href="/Ayuda">Ayuda</a>
     <a href="/logout">Cerrar sesión</a>
+
+  <#if rol?exists && rol == "admin">
+    <a href="/admin">Admin Panel</a>
+  </#if>
   </div>
 </div>
 

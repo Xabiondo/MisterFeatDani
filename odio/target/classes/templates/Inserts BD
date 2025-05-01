@@ -53,3 +53,103 @@ INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Manuel Neuer
 INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Marc-André ter Stegen', 'FC Barcelona', 600000, NULL);
 INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Pepe', 'Porto', 500000, NULL);
 INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Gerard Piqué', 'Retirado', 400000, NULL);
+
+
+INSERTS PREGUNTAS
+INSERT INTO preguntas (enunciado, respuesta) VALUES
+('¿Quién ganó el Balón de Oro en 2023?', 'Messi'),
+('¿En qué equipo juega Jude Bellingham?', 'Real Madrid'),
+('¿Cuántos mundiales tiene Brasil?', '5');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Equipo primero LaLiga 2024/25?', 'Barcelona');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Segundo clasificado LaLiga 2024/25?', 'Real Madrid');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Pichichi LaLiga 2024/25?', 'Lewandowski');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Primer Descendido LaLiga 2025?', 'Valladolid');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Balón de Oro 2024?', 'Rodri');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Estadio más grande LaLiga?', 'Camp Nou');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Más Champions?', 'Real Madrid');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Capitán Real Madrid 2025?', 'Carvajal');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Entrenador Barça 2025?', 'Flick');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Jugador más joven LaLiga? (Con apellido)', 'Lamine Yamal');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Equipo de Vinicius?', 'Real Madrid');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Equipo de Griezmann?', 'Atlético');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Entrenador de la Real? (sólo nombre)', 'Imanol');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Equipo más pechofrío de la liga?', 'Atlético');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Equipo de Griezmann?', 'Atlético');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Color camiseta Rayo?', 'Blanca');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Equipo de Isco 2025?', 'Betis');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Equipo de Aspas?', 'Celta');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Equipo de Kubo?', 'Real Sociedad');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Apodo Athletic Club? (una palabra)', 'Leones');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Ciudad del Cádiz CF?', 'Cádiz');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Color camiseta Osasuna?', 'Roja');
+
+-- 22 preguntas de programación
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Palabra para método sin retorno en Java?', 'void');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Cómo declarar constante en JS?', 'const');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Operador AND en C?', '&&');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Comentario de línea en SQL?', '--');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Lenguaje compilado de Google?', 'Go');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Extensión de archivo Python?', '.py');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Función básica de Python?', 'print()');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Tipo de dato flotante en C?', 'float');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Cómo importar paquete en Java?', 'import');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Palabra clave herencia en Java?', 'extends');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Qué devuelve len("hola") en Py?', '4');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Bucle que itera conocido?', 'for');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Cómo terminar comentario en C?', '*/');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Operador no igual en Java?', '!=');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Bloque tras try en Java?', 'finally');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Paquete básico de Java?', 'java.lang');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Palabra para clase en Java?', 'class');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Cómo abrir arreglo en JS?', '[]');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Palabra clave salida en C?', 'return');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Operador asignación en C?', '=');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Cómo definir función en C?', 'void');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Framework Java popular?', 'Spring');
+
+-- 8 preguntas de informática general
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Qué significa CPU?', 'Procesador');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Qué es RAM?', 'Memoria');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Qué es ROM?', 'Solo lectura');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Significado de LAN?', 'Red local');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Puerto estándar HTTP?', '80');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Puerto estándar SSH?', '22');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Función de DNS?', 'Resuelve nombres');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Protocolo para correo saliente?', 'SMTP');
+
+-- 22 preguntas de programación
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Palabra para método sin retorno en Java?', 'void');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Cómo declarar constante en JS?', 'const');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Operador AND en Java?', '&&');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Comentario de línea en SQL?', '--');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Lenguaje compilado de Google?', 'Go');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Extensión de archivo Python?', '.py');
+
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Tipo de dato flotante en Java?', 'float');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Cómo importar paquete en Java?', 'import');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Palabra clave herencia en Java?', 'extends');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Qué devuelve length("hola") en Java?', '4');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Bucle que itera conocido?', 'for');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Cómo terminar comentario en Java?', '*/');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Operador no igual en Java?', '!=');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Bloque tras try en Java?', 'finally');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Paquete básico de Java?', 'java.lang');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Palabra para clase en Java?', 'class');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Cómo abrir Array en JS?', '[]');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Palabra clave salida en Java?', 'return');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Operador asignación en Java?', '=');
+
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Framework Java popular?', 'Spring');
+
+-- 8 preguntas de informática general
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Qué significa CPU?', 'Procesador');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Qué es RAM?', 'Memoria');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Qué es ROM?', 'Solo lectura');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Significado de LAN?', 'Red local');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Puerto estándar HTTP?', '80');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Puerto estándar SSH?', '22');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Función de DNS?', 'Resuelve nombres');
+INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Protocolo para correo saliente?', 'SMTP');
+
+
+

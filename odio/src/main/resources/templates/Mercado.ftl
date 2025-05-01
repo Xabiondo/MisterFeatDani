@@ -1,140 +1,187 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercado de Jugadores de Fútbol</title>
-    <style>
-        body {
-font-family: Arial, sans-serif;
-background: #f5f5f5;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercado de Jugadores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
 margin: 0;
-padding: 0;
+font-family: 'Press Start 2P', cursive;
+background-color: #101820;
+color: #ffffff;
+padding-bottom: 50px;
 }
-        h1, h2 {
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #000;
+padding: 15px 25px;
+border-bottom: 3px solid #FFD700;
+}
+.navbar a {
+text-decoration: none;
+color: #FFD700;
+margin: 0 10px;
+font-size: 10px;
+}
+.main {
+padding: 30px 20px;
 text-align: center;
+}
+h2 {
+color: #FFD700;
+margin-bottom: 30px;
+}
+.form-container {
+background-color: #1e1e2e;
+border: 2px solid #FFD700;
+border-radius: 10px;
+padding: 30px;
+width: 90%;
+max-width: 1000px;
+margin: 0 auto;
+box-shadow: 0 0 10px #FFD700aa;
+text-align: center;
+}
+label {
+display: block;
+margin-top: 15px;
+font-size: 10px;
+}
+input[type="text"] {
+width: 90%;
+padding: 8px;
+margin-top: 5px;
+border-radius: 8px;
+border: none;
+font-family: 'Press Start 2P', cursive;
+font-size: 10px;
+}
+.options {
+margin-top: 15px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 10px;
+}
+button {
+margin-top: 20px;
+background-color: #FFD700;
+color: #000;
+border: none;
+padding: 10px 20px;
+border-radius: 8px;
+font-size: 10px;
+cursor: pointer;
+font-family: 'Press Start 2P', cursive;
+transition: all 0.3s ease;
+}
+button:hover {
+background-color: #000;
+color: #FFD700;
+box-shadow: 0 0 10px #00d9ff;
+}
+table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 20px;
+background: #fff;
 color: #2c3e50;
 }
-        table {
-margin: 30px auto;
-border-collapse: collapse;
-width: 90%;
-background: #fff;
-box-shadow: 0 2px 8px #ccc;
-}
-        th, td {
+th, td {
+padding: 10px;
 border: 1px solid #bbb;
-padding: 10px 12px;
-text-align: center;
+font-size: 12px;
 }
-        th {
+th {
 background: #34495e;
 color: #fff;
 }
-        tr:nth-child(even) {
-background: #f0f4f8;
-}
-        tr:hover {
+tr:nth-child(even) {
 background: #e1ecf4;
 }
-        form {
-display: flex;
-justify-content: center;
-margin: 20px 0;
+tr:hover {
+background: #d0e4f4;
 }
-        label {
-margin-right: 10px;
-}
-        input[type="text"] {
-padding: 5px;
-margin-right: 10px;
-border: 1px solid #bbb;
-border-radius: 4px;
-}
-        button {
+.action-form button {
+font-size: 10px;
 padding: 6px 14px;
-background: #2980b9;
-color: #fff;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-transition: background 0.2s;
 }
-        button:hover {
-background: #1c5980;
+.register-link {
+margin-top: 20px;
+font-size: 10px;
 }
-        footer {
-text-align: center;
-margin: 40px 0 10px 0;
-color: #888;
+.register-link a {
+color: #FFD700;
 }
-    </style>
+</style>
 </head>
 <body>
-    <h1>Mercado de Jugadores de Fútbol</h1>
 
-    <!-- Formulario de búsqueda -->
-    <h2>Buscar Subasta</h2>
-    <form action="/buscar" method="get">
-        <label for="nombre">Nombre del jugador:</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Ej: Lionel Messi">
+<div class="navbar">
+    <div><strong style="color: #FFD700;">FantasyFútbol</strong></div>
+    <div>
+      <a href="/interfaz">Inicio</a>
+      <a href="/poner-subasta">Subastar</a>
+      <a href="/Equipo">Mi Equipo</a>
+      <a href="/Ayuda">Ayuda</a>
+      <a href="/logout">Cerrar sesión</a>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="form-container">
+      <h2>Mercado de Jugadores</h2>
+      <p>¡Hola, ${nombreUsuario}! Dinero disponible: $${dineroDisponible}</p>
+
+      <form action="/buscar" method="get">
+        <label for="nombre">Buscar jugador:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej: Messi">
         <button type="submit">Buscar</button>
-    </form>
+      </form>
 
-    <!-- Lista de subastas activas -->
-    <h2>Subastas Activas</h2>
-    <table>
+      <table>
         <thead>
-            <tr>
-                <th>ID Subasta</th>
-                <th>Jugador</th>
-                <th>Equipo del Jugador</th>
-                <th>Precio de Salida</th>
-                <th>Fecha de Inicio</th>
-                <th>Vendedor</th>
-                <th>Acción</th>
-            </tr>
+          <tr>
+            <th>ID</th>
+            <th>Jugador</th>
+            <th>Equipo</th>
+            <th>Precio</th>
+            <th>Inicio</th>
+            <th>Vendedor</th>
+            <th>Acción</th>
+          </tr>
         </thead>
         <tbody>
-            <!-- Iteramos sobre la lista de subastas -->
-            <#list subastas as subasta>
-                <tr>
-                    <td>${subasta.id}</td>
-                    <td>${subasta.jugador.nombre}</td>
-                    <td>${subasta.jugador.equipo}</td>
-                    <td>${subasta.precioSalida} €</td>
-                    <!-- Mostrar la fecha de inicio -->
-                    <td>
-                        <#if subasta.fechaInicio??>
-                            ${subasta.fechaInicio}
-                        <#else>
-                            <em>Sin fecha</em>
-                        </#if>
-                    </td>
-                    <!-- Mostrar el nombre del vendedor de forma segura -->
-                    <td>
-                        <#if subasta.vendedor??>
-                            ${subasta.vendedor.nombre}
-                        <#else>
-                            <em>Sin vendedor</em>
-                        </#if>
-                    </td>
-                    <td>
-                        <form action="/Mercado" method="post" style="margin:0;">
-                            <input type="hidden" name="subastaId" value="${subasta.id}">
-                            <button type="submit">Comprar</button>
-                        </form>
-                    </td>
-
-
-                </tr>
-            </#list>
+          <#list subastas as subasta>
+            <tr>
+              <td>${subasta.id}</td>
+              <td>${subasta.jugador.nombre}</td>
+              <td>${subasta.jugador.equipo}</td>
+              <td>${subasta.precioSalida} €</td>
+              <td>
+                <#if subasta.fechaInicio??>${subasta.fechaInicio}
+                <#else><em>–</em></#if>
+              </td>
+              <td>
+                <#if subasta.vendedor??>${subasta.vendedor.nombre}
+                <#else><em>–</em></#if>
+              </td>
+              <td>
+                <form class="action-form" action="/Mercado" method="post">
+                  <input type="hidden" name="subastaId" value="${subasta.id}">
+                  <button type="submit">Comprar</button>
+                </form>
+              </td>
+            </tr>
+          </#list>
         </tbody>
-    </table>
+      </table>
+    </div>
+  </div>
 
-    <!-- Pie de página -->
-    <footer>
-        <p>&copy; 2023 Mercado de Jugadores de Fútbol. Todos los derechos reservados.</p>
-    </footer>
 </body>
 </html>

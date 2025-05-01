@@ -36,6 +36,8 @@ public class Main {
             config.fileRenderer(new JavalinFreemarker(freemarkerConfig));
         }).start(7070);
 
+
+
         // Ruta principal: Mostrar el formulario de login
         app.get("/", ctx -> {
             Map<String, Object> model = new HashMap<>();
@@ -101,6 +103,33 @@ public class Main {
             // Renderiza la plantilla de administración (crea Admin.ftl)
             ctx.render("Admin.ftl", model);
         });
+        app.post("/admin/update/{id}", ctx -> {
+            String nombreAdmin = ctx.sessionAttribute("nombre");
+            // Puedes mejorar el control de privilegios si tienes roles
+            if (nombreAdmin == null /* || !esAdmin(nombreAdmin) */) {
+                ctx.status(403).result("Acceso denegado");
+                return;
+            }
+            int idUsuario = Integer.parseInt(ctx.pathParam("id"));
+            String dineroStr = ctx.formParam("dinero");
+            double dinero;
+            try {
+                dinero = Double.parseDouble(dineroStr);
+            } catch (NumberFormatException e) {
+                ctx.result("Cantidad no válida");
+                return;
+            }
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            Usuario usuario = usuarioDAO.obtenerPorId(idUsuario);
+            if (usuario == null) {
+                ctx.result("Usuario no encontrado");
+                return;
+            }
+            usuario.setDinero((int) dinero);
+            usuarioDAO.actualizar(usuario);
+            ctx.redirect("/admin?mensaje=Dinero%20actualizado");
+        });
+
 
         app.post("/admin/delete/{id}", ctx -> {
             // Verificar que el usuario es admin
@@ -124,6 +153,31 @@ public class Main {
             // Redirigir al panel de administración
             ctx.redirect("/admin");
         });
+        app.post("/admin/create", ctx -> {
+            String nombreAdmin = ctx.sessionAttribute("nombre");
+            // Puedes mejorar el control de privilegios si tienes roles
+            if (nombreAdmin == null /* || !esAdmin(nombreAdmin) */) {
+                ctx.status(403).result("Acceso denegado");
+                return;
+            }
+            String nombre = ctx.formParam("nombre");
+            String password = ctx.formParam("password");
+            String rol = ctx.formParam("rol");
+
+            if (nombre == null || nombre.isEmpty() || password == null || password.isEmpty() || rol == null || rol.isEmpty()) {
+                ctx.result("Por favor, completa todos los campos.");
+                return;
+            }
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            if (usuarioDAO.estaRegistrado(nombre)) {
+                ctx.result("El nombre de usuario ya está en uso.");
+                return;
+            }
+            Usuario nuevoUsuario = new Usuario(nombre, password, rol);
+            usuarioDAO.guardar(nuevoUsuario);
+            ctx.redirect("/admin?mensaje=Usuario%20creado");
+        });
+
 
 
 // GET: Muestra la interfaz con el dinero y el botón
@@ -281,6 +335,14 @@ public class Main {
             // Crear el modelo para FreeMarker
             Map<String, Object> model = new HashMap<>();
             model.put("subastas", subastasActivas);
+
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+
+            Usuario usuario = usuarioDAO.obtenerPorNombre(ctx.sessionAttribute("nombre"));
+            if (usuario != null) {
+                model.put("nombreUsuario", usuario.getNombre());
+                model.put("dineroDisponible", usuario.getDinero());
+            }
 
             // Renderizar la plantilla Mercado.ftl
             ctx.render("Mercado.ftl", model);

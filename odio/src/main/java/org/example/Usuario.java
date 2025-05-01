@@ -29,6 +29,14 @@ public class Usuario {
         this.rol = "usuario"; // Valor predeterminado
         this.dinero = 100000; // Valor predeterminado
     }
+    public Usuario(String nombre , String contraseña , String rol) {
+        this.nombre = nombre;
+        this.contraseña = contraseña;
+        this.rol = rol; // Valor predeterminado
+        this.dinero = 100000; // Valor predeterminado
+    }
+
+
 
     // Constructor simplificado para crear un usuario con solo nombre y contraseña
     public Usuario(String nombre, String contraseña) {
