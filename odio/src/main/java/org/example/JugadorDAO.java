@@ -136,6 +136,41 @@ public class JugadorDAO {
             }
         }
     }
+    public void quitarUsuarioDeJugadores(int idUsuario) {
+        EntityManager entityManager = null;
+        EntityTransaction transaction = null;
+        try {
+            entityManager = entityManagerFactory.createEntityManager();
+            transaction = entityManager.getTransaction();
+            transaction.begin();
+
+            // Consulta JPQL para obtener todos los jugadores de ese usuario
+            String jpql = "SELECT j FROM Jugador j WHERE j.usuario.id = :idUsuario";
+            TypedQuery<Jugador> query = entityManager.createQuery(jpql, Jugador.class);
+            query.setParameter("idUsuario", idUsuario);
+
+            List<Jugador> jugadores = query.getResultList();
+
+            // Para cada jugador, quitar la relación con el usuario
+            for (Jugador jugador : jugadores) {
+                jugador.setUsuario(null); // Rompe la relación
+                entityManager.merge(jugador); // Actualiza el jugador en la base de datos
+            }
+
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+            throw new RuntimeException("Error al quitar el usuario de los jugadores", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen()) {
+                entityManager.close();
+            }
+        }
+    }
+
+
 
 
     public void actualizar(Jugador jugador) {

@@ -44,28 +44,30 @@ public class DatabaseManager {
 
         // Crear la tabla jugadores
         String crearTablaJugadores = """
-    CREATE TABLE IF NOT EXISTS jugadores (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        nombre VARCHAR(100) NOT NULL,
-        equipo VARCHAR(100) NOT NULL,
-        precio DOUBLE NOT NULL,
-        id_usuario INT,
-        FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-    );
-    """;
+CREATE TABLE IF NOT EXISTS jugadores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    equipo VARCHAR(100) NOT NULL,
+    precio DOUBLE NOT NULL,
+    id_usuario INT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE SET NULL
+);
+""";
 
         // Crear la tabla subastas
         String crearTablaSubastas = """
-    CREATE TABLE IF NOT EXISTS subastas (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        id_jugador INT NOT NULL,
-        precioSalida DOUBLE NOT NULL default 1000000,
-        estaActiva BOOLEAN DEFAULT TRUE,
-        fechaInicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        fechaFin TIMESTAMP NULL,
-        FOREIGN KEY (id_jugador) REFERENCES jugadores(id)
-    );
-    """;
+CREATE TABLE IF NOT EXISTS subastas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_jugador INT NOT NULL,
+    precioSalida DOUBLE NOT NULL DEFAULT 1000000,
+    estaActiva BOOLEAN DEFAULT TRUE,
+    fechaInicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fechaFin TIMESTAMP NULL,
+    id_vendedor INT NULL,
+    FOREIGN KEY (id_jugador) REFERENCES jugadores(id),
+    FOREIGN KEY (id_vendedor) REFERENCES usuarios(id) ON DELETE SET NULL
+);
+""";
 
         // Crear la tabla pujas
         String crearTablaPujas = """

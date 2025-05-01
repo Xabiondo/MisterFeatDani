@@ -1,0 +1,55 @@
+INSERT INTO usuarios (id, nombre, contraseña, rol, dinero)
+VALUES (4, 'admin', 'admin', 'admin', 10000);
+
+
+
+
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Cristiano Ronaldo', 'Al-Nassr', 11500000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Kylian Mbappé', 'PSG', 11000000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Erling Haaland', 'Manchester City', 10500000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Neymar Jr', 'Santos', 10000000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Vinícius Júnior', 'Real Madrid', 9500000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Jude Bellingham', 'Real Madrid', 9000000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Kevin De Bruyne', 'Manchester City', 8500000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Harry Kane', 'Bayern Munich', 8000000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Mohamed Salah', 'Liverpool', 7800000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Robert Lewandowski', 'FC Barcelona', 7600000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Luka Modric', 'Real Madrid', 7400000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Toni Kroos', 'Real Madrid', 7200000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Rodri', 'Manchester City', 7000000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Karim Benzema', 'Al-Ittihad', 6800000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Heung-min Son', 'Tottenham Hotspur', 6600000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Luis Suárez', 'Inter Miami', 6400000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Pedri', 'FC Barcelona', 6200000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Antoine Griezmann', 'Atlético de Madrid', 6000000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Phil Foden', 'Manchester City', 5800000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Gavi', 'FC Barcelona', 5600000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Frenkie de Jong', 'FC Barcelona', 5400000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('João Cancelo', 'FC Barcelona', 5200000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Bukayo Saka', 'Arsenal', 5000000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Jamal Musiala', 'Bayern Munich', 4800000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Rafael Leão', 'AC Milan', 4600000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Marcus Rashford', 'Manchester United', 4400000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Ilkay Gündogan', 'FC Barcelona', 4200000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Casemiro', 'Manchester United', 4000000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Jadon Sancho', 'Manchester United', 3800000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Achraf Hakimi', 'PSG', 3600000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Riyad Mahrez', 'Al-Ahli', 3400000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Jules Koundé', 'FC Barcelona', 3200000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Mats Hummels', 'Borussia Dortmund', 3000000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Joshua Kimmich', 'Bayern Munich', 2800000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Federico Valverde', 'Real Madrid', 2600000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Eduardo Camavinga', 'Real Madrid', 2400000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Aurélien Tchouaméni', 'Real Madrid', 2200000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Alphonso Davies', 'Bayern Munich', 2000000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Trent Alexander-Arnold', 'Liverpool', 1800000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Virgil van Dijk', 'Liverpool', 1600000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('João Félix', 'FC Barcelona', 1400000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Sergio Ramos', 'Sevilla', 1200000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Gianluigi Donnarumma', 'PSG', 1000000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Jan Oblak', 'Atlético de Madrid', 900000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Thibaut Courtois', 'Real Madrid', 800000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Manuel Neuer', 'Bayern Munich', 700000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Marc-André ter Stegen', 'FC Barcelona', 600000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Pepe', 'Porto', 500000, NULL);
+INSERT INTO jugadores (nombre, equipo, precio, id_usuario) VALUES ('Gerard Piqué', 'Retirado', 400000, NULL);

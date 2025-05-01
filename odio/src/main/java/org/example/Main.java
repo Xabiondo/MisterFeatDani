@@ -56,6 +56,7 @@ public class Main {
 
             // Crear una instancia del DAO
             UsuarioDAO usuarioDAO = new UsuarioDAO();
+            Usuario usuario = usuarioDAO.obtenerPorNombre(nombre);
 
             // Verificar si el usuario existe en la base de datos
             if (usuarioDAO.existeUsuario(nombre, password)) {
@@ -66,6 +67,12 @@ public class Main {
                 ctx.sessionAttribute("nombre", nombre);
                 ctx.sessionAttribute("password", password);
                 ctx.sessionAttribute("idUsuario"  , idUser);
+                ctx.sessionAttribute("rol", usuario.getRol());
+
+                if (ctx.sessionAttribute("rol").equals("admin")){
+                    ctx.redirect("/admin");
+                    return;
+                }
 
                 // Redirigir al usuario a la página principal
                 ctx.redirect("/interfaz");
@@ -73,6 +80,53 @@ public class Main {
                 ctx.result("Nombre de usuario o contraseña incorrectos.");
             }
         });
+
+        app.get("/admin", ctx -> {
+            // Verifica si hay sesión y si el usuario es "admin"
+            String nombre = ctx.sessionAttribute("nombre");
+            if (nombre == null || !nombre.equals("admin")) {
+                ctx.status(403).result("Acceso denegado: solo disponible para el administrador.");
+                return;
+            }
+
+            // Carga todos los usuarios
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            List<Usuario> usuarios = usuarioDAO.obtenerTodos();
+
+            // Prepara el modelo para la plantilla
+            Map<String, Object> model = new HashMap<>();
+            model.put("title", "Panel de Administración");
+            model.put("usuarios", usuarios);
+
+            // Renderiza la plantilla de administración (crea Admin.ftl)
+            ctx.render("Admin.ftl", model);
+        });
+
+        app.post("/admin/delete/{id}", ctx -> {
+            // Verificar que el usuario es admin
+            String nombre = ctx.sessionAttribute("nombre");
+            if (nombre == null || !nombre.equals("admin")) {
+                ctx.status(403).result("Acceso denegado");
+                return;
+            }
+
+            int userId = Integer.parseInt(ctx.pathParam("id"));
+
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            JugadorDAO jugadorDAO = new JugadorDAO();
+
+            // Quitar la FK de los jugadores de este usuario
+            jugadorDAO.quitarUsuarioDeJugadores(userId);
+
+            // Eliminar el usuario
+            usuarioDAO.eliminar(userId);
+
+            // Redirigir al panel de administración
+            ctx.redirect("/admin");
+        });
+
+
+
 
 
         app.get("/interfaz", ctx -> {
