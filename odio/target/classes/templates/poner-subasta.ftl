@@ -88,7 +88,9 @@
          <a href="/Mercado">Mercado</a>
          <a href="/poner-subasta">Subastar</a>
          <a href="/Ayuda">Ayuda</a>
+         <a href="/Preguntas">Palancas económicas</a>
          <a href="/logout">Cerrar sesión</a>
+
       </div>
     </div>
 

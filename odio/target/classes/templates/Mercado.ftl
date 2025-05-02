@@ -124,12 +124,14 @@ color: #FFD700;
 <div class="navbar">
     <div><strong style="color: #FFD700;">FantasyFútbol</strong></div>
     <div>
-        <a href="/interfaz">Inicio</a>
-        <a href="/Equipo">Mi Equipo</a>
-        <a href="/Mercado">Mercado</a>
-        <a href="/poner-subasta">Subastar</a>
-        <a href="/Ayuda">Ayuda</a>
-        <a href="/logout">Cerrar sesión</a>
+         <a href="/interfaz">Inicio</a>
+         <a href="/Equipo">Mi Equipo</a>
+         <a href="/Mercado">Mercado</a>
+         <a href="/poner-subasta">Subastar</a>
+         <a href="/Ayuda">Ayuda</a>
+         <a href="/Preguntas">Palancas económicas</a>
+         <a href="/logout">Cerrar sesión</a>
+
     </div>
   </div>
 

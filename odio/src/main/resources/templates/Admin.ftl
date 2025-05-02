@@ -3,7 +3,137 @@
 <head>
   <meta charset="UTF-8">
   <title>Panel de Administración - Fantasy Liga</title>
+<style>
+    /* Estilos Generales */
+    body {
+      margin: 0;
+      font-family: 'Press Start 2P', cursive;
+      background-color: #101820;
+      color: #ffffff;
+      padding-bottom: 50px;
+    }
 
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #000;
+      padding: 15px 25px;
+      border-bottom: 3px solid #FFD700;
+    }
+    .navbar a {
+      text-decoration: none;
+      color: #FFD700;
+      margin: 0 10px;
+      font-size: 10px;
+    }
+
+    .container {
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #FFD700;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    h2 {
+      color: #FFD700;
+      margin: 30px 0 10px;
+      font-size: 12px;
+    }
+
+    .section {
+      background-color: #1e1e2e;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px #FFD700;
+    }
+
+    /* Estilos del formulario */
+    .form-inline {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .form-inline input, .form-inline select {
+      padding: 8px;
+      font-size: 10px;
+      border: 1px solid #FFD700;
+      border-radius: 6px;
+      background-color: #333;
+      color: #FFD700;
+    }
+
+    .form-inline button {
+      padding: 8px 15px;
+      font-size: 10px;
+      background-color: #00d9ff;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00d9ff;
+    }
+
+    .form-inline button:hover {
+      background-color: #000;
+      color: #00d9ff;
+      box-shadow: 0 0 15px #FFD700;
+    }
+
+    /* Estilos de la tabla de usuarios */
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    table th, table td {
+      padding: 10px;
+      text-align: center;
+      font-size: 10px;
+      border: 1px solid #FFD700;
+    }
+
+    table th {
+      background-color: #333;
+      color: #FFD700;
+    }
+
+    table td {
+      background-color: #1e1e2e;
+    }
+
+    .update-btn, .delete-btn {
+      padding: 5px 10px;
+      font-size: 8px;
+      background-color: #00d9ff;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00d9ff;
+    }
+
+    .update-btn:hover, .delete-btn:hover {
+      background-color: #000;
+      color: #00d9ff;
+      box-shadow: 0 0 15px #FFD700;
+    }
+
+    .no-users {
+      color: #FFD700;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+  </style>
 
 </head>
 <body>
@@ -47,7 +177,6 @@
               <th>ID</th>
               <th>Nombre</th>
               <th>Dinero (€)</th>
-              <th>Modificar</th>
               <th>Eliminar</th>
             </tr>
           </thead>

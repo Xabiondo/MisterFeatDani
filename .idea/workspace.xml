@@ -4,61 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e214ee86-7d7f-49fa-be05-4e200a96dcd7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/empleados.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mi-proyecto.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DatabaseManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Jugador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/JugadorDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Pregunta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/PreguntaDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Subasta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/SubastaDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Usuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/UsuarioDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Ayuda.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Contacto.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Equipo.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/InsertsBD" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Interface.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Login.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Mercado.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Preguntas.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Register.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/poner-subasta.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/schema.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/example/DatabaseManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/example/Jugador.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/example/JugadorDAO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/example/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/example/Pregunta.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/example/PreguntaDAO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/example/Subasta.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/example/SubastaDAO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/example/Usuario.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/example/UsuarioDAO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/Admin.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/Ayuda.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/Contacto.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/Equipo.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/InsertsBD" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/Interface.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/Login.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/Mercado.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/Preguntas.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/Register.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/poner-subasta.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/schema.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="e214ee86-7d7f-49fa-be05-4e200a96dcd7" name="Changes" comment="Todo lnkeado,posicion añadida en mercado, y css añadido y arreglo lógica de preguntas">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/odio/target/classes/org/example/DatabaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/odio/odio/target/classes/org/example/DatabaseManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/odio/target/classes/templates/Admin.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/odio/target/classes/templates/Admin.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/src/main/java/org/example/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/java/org/example/DatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/src/main/resources/templates/Admin.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/resources/templates/Admin.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/src/main/resources/templates/Ayuda.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/resources/templates/Ayuda.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/src/main/resources/templates/Equipo.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/resources/templates/Equipo.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/src/main/resources/templates/Interface.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/resources/templates/Interface.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/src/main/resources/templates/Mercado.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/resources/templates/Mercado.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/src/main/resources/templates/Preguntas.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/resources/templates/Preguntas.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/src/main/resources/templates/poner-subasta.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/resources/templates/poner-subasta.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/target/classes/org/example/DatabaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/odio/target/classes/org/example/DatabaseManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/target/classes/templates/Admin.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/target/classes/templates/Admin.ftl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,32 +27,36 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Xabiondo"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Xabiondo&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Xabiondo/MisterFeatDani.git",
-    "accountId": "d397e640-2c4b-4200-9b6b-3cfff773292e"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Xabiondo/MisterFeatDani.git&quot;,
+    &quot;accountId&quot;: &quot;d397e640-2c4b-4200-9b6b-3cfff773292e&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2wVQWYtsYJ1UqiAGkdwWrot4ooT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.DatabaseManager.executor": "Run",
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true"
   }
@@ -121,5 +84,9 @@
       <updated>1746124293746</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Todo lnkeado,posicion añadida en mercado, y css añadido y arreglo lógica de preguntas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Todo lnkeado,posicion añadida en mercado, y css añadido y arreglo lógica de preguntas" />
   </component>
 </project>

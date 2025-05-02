@@ -91,7 +91,9 @@ box-shadow: 0 0 10px #00d9ff;
    <a href="/Mercado">Mercado</a>
    <a href="/poner-subasta">Subastar</a>
    <a href="/Ayuda">Ayuda</a>
+   <a href="/Preguntas">Palancas económicas</a>
    <a href="/logout">Cerrar sesión</a>
+
   <#if rol?exists && rol == "admin">
     <a href="/admin">Admin Panel</a>
   </#if>
@@ -108,7 +110,7 @@ box-shadow: 0 0 10px #00d9ff;
     <button class="menu-button"><a href="/Equipo">Ver mi equipo</a></button>
     <button class="menu-button"><a href="/Ayuda">Ayuda</a></button>
     <button class="menu-button"><a href="/logout">Cerrar sesión</a></button>
-    <button class="menu-button"><a href="/Preguntas">Financiarse</a></button>
+    <button class="menu-button"><a href="/Preguntas">Palancas económicas</a></button>
   </div>
 </div>
 
