@@ -15,11 +15,13 @@ public class Jugador {
     @Column(nullable = false)
     private String equipo;
 
-
+    @Column(nullable = false)
+    private double precio;
 
 
     @Column(nullable = false)
-    private double precio;
+    private String posicion;
+
     // Relación con Usuario (Muchos jugadores pertenecen a un usuario)
     @ManyToOne
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
@@ -32,25 +34,15 @@ public class Jugador {
     public Jugador() {}
 
     // Constructor con parámetros
-    public Jugador(String nombre, String equipo, double precio) {
+    public Jugador(String nombre, String equipo, double precio, String posicion) {
         this.nombre = nombre;
         this.equipo = equipo;
         this.precio = precio;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public Subasta getSubasta() {
-        return subasta;
-    }
-
-    public void setSubasta(Subasta subasta) {
-        this.subasta = subasta;
+        this.posicion = posicion;
     }
 
     // Getters y Setters
+
     public int getId() {
         return id;
     }
@@ -83,7 +75,28 @@ public class Jugador {
         this.precio = precio;
     }
 
+
+    public String getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(String posicion) {
+        this.posicion = posicion;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Subasta getSubasta() {
+        return subasta;
+    }
+
+    public void setSubasta(Subasta subasta) {
+        this.subasta = subasta;
     }
 }

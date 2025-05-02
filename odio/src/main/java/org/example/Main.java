@@ -181,7 +181,7 @@ public class Main {
 
 
 // GET: Muestra la interfaz con el dinero y el botón
-        app.get("/ganar-dinero", ctx -> {
+        app.get("/Preguntas", ctx -> {
             String nombre = ctx.sessionAttribute("nombre");
             if (nombre == null) {
                 ctx.redirect("/");
@@ -207,7 +207,7 @@ public class Main {
             ctx.render("preguntas.ftl", model);
         });
 // POST: Suma dinero y recarga la interfaz
-        app.post("/ganar-dinero", ctx -> {
+        app.post("/Preguntas", ctx -> {
             String nombre = ctx.sessionAttribute("nombre");
             if (nombre == null) {
                 ctx.redirect("/");
@@ -231,7 +231,7 @@ public class Main {
             } else {
                 mensaje = "Incorrecto. Inténtalo de nuevo.";
             }
-            ctx.redirect("/ganar-dinero?mensaje=" + java.net.URLEncoder.encode(mensaje, "UTF-8"));
+            ctx.redirect("/Preguntas?mensaje=" + java.net.URLEncoder.encode(mensaje, "UTF-8"));
         });
 
 
@@ -505,14 +505,36 @@ public class Main {
             // Redirigir al usuario con un mensaje de éxito
             ctx.redirect("/interfaz?mensaje=Jugador%20subastado%20correctamente");
         });
-
-        // Ruta GET para "Pujar por un jugador" (protegida)
         app.get("/Equipo", ctx -> {
-            String nombre = ctx.sessionAttribute("nombre");
+            // Verificar sesión
+            String nombreUsuario = ctx.sessionAttribute("nombre");
+            if (nombreUsuario == null) {
+                ctx.redirect("/");
+                return;
+            }
 
+            // Obtener ID del usuario logueado
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            Integer idUsuario = usuarioDAO.obtenerIdPorNombre(nombreUsuario);
+
+            if (idUsuario == null) {
+                ctx.result("Error al obtener el ID del usuario.");
+                return;
+            }
+
+            // Obtener los jugadores del usuario
+            JugadorDAO jugadorDAO = new JugadorDAO();
+            List<Jugador> inventario = jugadorDAO.obtenerJugadoresPorUsuarioSinSubastar(idUsuario);
+
+            if (inventario == null || inventario.isEmpty()) {
+                inventario = new ArrayList<>(); // Aseguramos que no sea null
+            }
+
+            // Preparar modelo para FreeMarker
             Map<String, Object> model = new HashMap<>();
-            model.put("title", "Pujar por un Jugador");
-            model.put("nombreUsuario", nombre);
+            model.put("title", "Mi Equipo");
+            model.put("nombreUsuario", nombreUsuario);
+            model.put("inventario", inventario);
 
             ctx.render("Equipo.ftl", model);
         });

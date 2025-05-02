@@ -124,11 +124,12 @@ color: #FFD700;
 <div class="navbar">
     <div><strong style="color: #FFD700;">FantasyFútbol</strong></div>
     <div>
-      <a href="/interfaz">Inicio</a>
-      <a href="/poner-subasta">Subastar</a>
-      <a href="/Equipo">Mi Equipo</a>
-      <a href="/Ayuda">Ayuda</a>
-      <a href="/logout">Cerrar sesión</a>
+        <a href="/interfaz">Inicio</a>
+        <a href="/Equipo">Mi Equipo</a>
+        <a href="/Mercado">Mercado</a>
+        <a href="/poner-subasta">Subastar</a>
+        <a href="/Ayuda">Ayuda</a>
+        <a href="/logout">Cerrar sesión</a>
     </div>
   </div>
 
@@ -149,6 +150,7 @@ color: #FFD700;
             <th>ID</th>
             <th>Jugador</th>
             <th>Equipo</th>
+            <th>posicion</th>
             <th>Precio</th>
             <th>Inicio</th>
             <th>Vendedor</th>
@@ -161,7 +163,9 @@ color: #FFD700;
               <td>${subasta.id}</td>
               <td>${subasta.jugador.nombre}</td>
               <td>${subasta.jugador.equipo}</td>
+              <td>${subasta.jugador.posicion}</td>
               <td>${subasta.precioSalida} €</td>
+
               <td>
                 <#if subasta.fechaInicio??>${subasta.fechaInicio}
                 <#else><em>–</em></#if>

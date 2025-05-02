@@ -102,11 +102,12 @@ width: fit-content;
 <div class="navbar">
     <div><strong style="color: #FFD700;">FantasyFútbol</strong></div>
     <div>
-        <a href="/interfaz">Inicio</a>
-        <a href="/Equipo">Mi Equipo</a>
-        <a href="/Mercado">Mercado</a>
-        <a href="/Ayuda">Ayuda</a>
-        <a href="/logout">Cerrar sesión</a>
+         <a href="/interfaz">Inicio</a>
+         <a href="/Equipo">Mi Equipo</a>
+         <a href="/Mercado">Mercado</a>
+         <a href="/poner-subasta">Subastar</a>
+         <a href="/Ayuda">Ayuda</a>
+         <a href="/logout">Cerrar sesión</a>
     </div>
 </div>
 
@@ -114,7 +115,7 @@ width: fit-content;
     <div class="pregunta-container">
         <h2>Responde y gana dinero</h2>
         <div class="dinero">Dinero disponible: $${dineroDisponible}</div>
-        <form method="post" action="/ganar-dinero">
+        <form method="post" action="/Preguntas">
             <p><strong>${pregunta.enunciado}</strong></p>
             <input type="hidden" name="id" value="${pregunta.id}">
             <input type="text" name="respuesta" placeholder="Tu respuesta" required>

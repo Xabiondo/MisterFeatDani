@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS jugadores (
     equipo VARCHAR(100) NOT NULL,
     precio DOUBLE NOT NULL,
     id_usuario INT NULL,
+    posicion varchar(30) NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE SET NULL
 );
 """;
