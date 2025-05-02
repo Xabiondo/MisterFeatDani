@@ -82,29 +82,7 @@ INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Apodo Athletic Club? (un
 INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Ciudad del Cádiz CF?', 'Cádiz');
 INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Color camiseta Osasuna?', 'Roja');
 
--- 22 preguntas de programación
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Palabra para método sin retorno en Java?', 'void');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Cómo declarar constante en JS?', 'const');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Operador AND en C?', '&&');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Comentario de línea en SQL?', '--');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Lenguaje compilado de Google?', 'Go');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Extensión de archivo Python?', '.py');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Función básica de Python?', 'print()');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Tipo de dato flotante en C?', 'float');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Cómo importar paquete en Java?', 'import');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Palabra clave herencia en Java?', 'extends');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Qué devuelve len("hola") en Py?', '4');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Bucle que itera conocido?', 'for');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Cómo terminar comentario en C?', '*/');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Operador no igual en Java?', '!=');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Bloque tras try en Java?', 'finally');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Paquete básico de Java?', 'java.lang');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Palabra para clase en Java?', 'class');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Cómo abrir arreglo en JS?', '[]');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Palabra clave salida en C?', 'return');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Operador asignación en C?', '=');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Cómo definir función en C?', 'void');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Framework Java popular?', 'Spring');
+
 
 -- 8 preguntas de informática general
 INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Qué significa CPU?', 'Procesador');
@@ -141,11 +119,3 @@ INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Operador asignación en 
 INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Framework Java popular?', 'Spring');
 
 -- 8 preguntas de informática general
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Qué significa CPU?', 'Procesador');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Qué es RAM?', 'Memoria');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Qué es ROM?', 'Solo lectura');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Significado de LAN?', 'Red local');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Puerto estándar HTTP?', '80');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Puerto estándar SSH?', '22');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Función de DNS?', 'Resuelve nombres');
-INSERT INTO preguntas (enunciado, respuesta) VALUES ('¿Protocolo para correo saliente?', 'SMTP');

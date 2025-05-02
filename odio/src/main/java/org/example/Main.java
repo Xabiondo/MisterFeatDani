@@ -84,9 +84,9 @@ public class Main {
         });
 
         app.get("/admin", ctx -> {
-            // Verifica si hay sesión y si el usuario es "admin"
-            String nombre = ctx.sessionAttribute("nombre");
-            if (nombre == null || !nombre.equals("admin")) {
+            // Verifica si hay sesión y si el usuario tiene rol "admin"
+            String rol = ctx.sessionAttribute("rol");
+            if (rol == null || !rol.equals("admin")) {
                 ctx.status(403).result("Acceso denegado: solo disponible para el administrador.");
                 return;
             }
@@ -103,6 +103,7 @@ public class Main {
             // Renderiza la plantilla de administración (crea Admin.ftl)
             ctx.render("Admin.ftl", model);
         });
+
         app.post("/admin/update/{id}", ctx -> {
             String nombreAdmin = ctx.sessionAttribute("nombre");
             // Puedes mejorar el control de privilegios si tienes roles
@@ -382,6 +383,11 @@ public class Main {
                 return;
             }
             Jugador jugador = subasta.getJugador();
+
+            if (jugador.getUsuario() != null && jugador.getUsuario().getId() == comprador.getId()) {
+                ctx.result("No puedes comprar un jugador que ya es tuyo.");
+                return;
+            }
 
             if (comprador.getDinero() < subasta.getPrecioSalida()) {
                 ctx.result("No tienes suficiente dinero para comprar este jugador.");

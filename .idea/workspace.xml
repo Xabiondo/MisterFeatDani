@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e214ee86-7d7f-49fa-be05-4e200a96dcd7" name="Changes" comment="Todo lnkeado,posicion añadida en mercado, y css añadido y arreglo lógica de preguntas">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/odio/src/main/java/org/example/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/java/org/example/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/odio/src/main/java/org/example/JugadorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/java/org/example/JugadorDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/odio/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/odio/target/classes/org/example/DatabaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/odio/target/classes/org/example/DatabaseManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/odio/target/classes/org/example/JugadorDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/odio/target/classes/org/example/JugadorDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/src/main/resources/templates/InsertsBD" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/resources/templates/InsertsBD" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/odio/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/odio/target/classes/org/example/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
