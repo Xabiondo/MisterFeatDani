@@ -12,7 +12,7 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         // Inicializar la base de datos
-        DatabaseManager.inicializarBaseDeDatos();
+       // DatabaseManager.inicializarBaseDeDatos();
         //tienes que tener el workbench la base de datos creada, este metodo solo crea las tablas
         // create database fantasy_liga
 
@@ -225,9 +225,9 @@ public class Main {
             if (acertada) {
                 UsuarioDAO usuarioDAO = new UsuarioDAO();
                 Usuario usuario = usuarioDAO.obtenerPorNombre(nombre);
-                usuario.setDinero(usuario.getDinero() + 1000);
+                usuario.setDinero(usuario.getDinero() + 10000);
                 usuarioDAO.actualizar(usuario);
-                mensaje = "¡Correcto! Has ganado 1000 euros.";
+                mensaje = "¡Correcto! Has ganado 10000 euros.";
             } else {
                 mensaje = "Incorrecto. Inténtalo de nuevo.";
             }
@@ -397,6 +397,12 @@ public class Main {
             jugador.setUsuario(comprador);
             jugador.setSubasta(null); // Rompe la relación
             jugadorDAO.actualizar(jugador);
+
+            Usuario vendedor = subasta.getVendedor(); // Asegúrate de tener este método/campo
+            if (vendedor != null) {
+                vendedor.setDinero((int) (vendedor.getDinero() + subasta.getPrecioSalida()));
+                usuarioDAO.actualizar(vendedor);
+            }
 
             // 3. Eliminar la subasta
             SubastaDAO.eliminar(4);

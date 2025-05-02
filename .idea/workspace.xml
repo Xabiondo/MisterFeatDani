@@ -6,18 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e214ee86-7d7f-49fa-be05-4e200a96dcd7" name="Changes" comment="Todo lnkeado,posicion añadida en mercado, y css añadido y arreglo lógica de preguntas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/odio/odio/target/classes/org/example/DatabaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/odio/odio/target/classes/org/example/DatabaseManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/odio/odio/target/classes/templates/Admin.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/odio/target/classes/templates/Admin.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/odio/src/main/java/org/example/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/java/org/example/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/odio/src/main/resources/templates/Admin.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/resources/templates/Admin.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/odio/src/main/resources/templates/Ayuda.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/resources/templates/Ayuda.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/odio/src/main/resources/templates/Equipo.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/resources/templates/Equipo.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/odio/src/main/resources/templates/Interface.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/resources/templates/Interface.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/odio/src/main/resources/templates/Mercado.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/resources/templates/Mercado.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/odio/src/main/resources/templates/Preguntas.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/resources/templates/Preguntas.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/odio/src/main/resources/templates/poner-subasta.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/resources/templates/poner-subasta.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/src/main/java/org/example/JugadorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/java/org/example/JugadorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/odio/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/odio/target/classes/org/example/DatabaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/odio/target/classes/org/example/DatabaseManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/odio/target/classes/templates/Admin.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/odio/target/classes/templates/Admin.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/target/classes/org/example/JugadorDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/odio/target/classes/org/example/JugadorDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odio/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/odio/target/classes/org/example/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,17 +44,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.DatabaseManager.executor": "Run",
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.DatabaseManager.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="MisterFeatDani" />

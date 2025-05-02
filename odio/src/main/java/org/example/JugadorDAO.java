@@ -39,7 +39,7 @@ public class JugadorDAO {
             // Paso 1: Obtener 5 jugadores aleatorios con id_usuario IS NULL
             String sqlSelect = "SELECT * FROM jugadores WHERE id_usuario IS NULL ORDER BY RAND() LIMIT ?";
             Query querySelect = entityManager.createNativeQuery(sqlSelect, Jugador.class);
-            querySelect.setParameter(1, 5); // Limitar el número de resultados
+            querySelect.setParameter(1, 10); // Limitar el número de resultados
 
             List<Jugador> jugadoresAleatorios = querySelect.getResultList();
 

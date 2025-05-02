@@ -51,7 +51,7 @@ public class DatabaseManager {
         nombre VARCHAR(100) NOT NULL,
         contraseña VARCHAR(100) NOT NULL,
         rol VARCHAR(50) DEFAULT 'usuario',
-        dinero DOUBLE DEFAULT 1000000
+        dinero DOUBLE DEFAULT 100000
     );
     """;
         String crearTablaJugadores = """
